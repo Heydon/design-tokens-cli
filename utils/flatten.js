@@ -1,3 +1,8 @@
+/**
+ * Flattens a standard design tokens object into arrays
+ * @param {Object} object The standard tokens object
+ * @returns {Array} A multidimensional array of each category name down to the token name and then its value
+ */
 const flatten = object => {
   const existingObjects = [];
   const path = [];
