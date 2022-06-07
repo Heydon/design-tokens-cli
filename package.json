@@ -1,0 +1,19 @@
+{
+  "name": "bruck-tokens",
+  "version": "0.1.0",
+  "description": "Design tokens parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --env=jsdom --silent=false"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heydon/bruck-tokens.git"
+  },
+  "author": "Heydon Pickering",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Heydon/bruck-tokens/issues"
+  },
+  "homepage": "https://github.com/Heydon/bruck-tokens#readme"
+}
