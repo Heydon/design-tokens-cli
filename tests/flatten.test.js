@@ -1,7 +1,7 @@
 'use strict';
 import { flatten } from "../utils/flatten.js";
 
-test('Sorts an object\'s keys alphabetically', () => {
+test('Flattens a design tokens object into an array of arrays', () => {
   const tokens = {
     "brand": {
       "size": {
@@ -25,7 +25,7 @@ test('Sorts an object\'s keys alphabetically', () => {
   }
 
   const arrays = flatten(tokens);
-  
+
   expect(arrays.at(0)[1]).toBe('size');
   expect(arrays.at(1)[3]).toBe('1em');
 });
