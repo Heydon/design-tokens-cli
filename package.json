@@ -1,10 +1,14 @@
 {
   "name": "bruck-tokens",
   "version": "0.1.0",
+  "type": "module",
   "description": "Design tokens parser",
   "main": "index.js",
+  "jest": {
+    "transform": {}
+  },
   "scripts": {
-    "test": "jest --env=jsdom --silent=false"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
   },
   "repository": {
     "type": "git",
@@ -15,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Heydon/bruck-tokens/issues"
   },
-  "homepage": "https://github.com/Heydon/bruck-tokens#readme"
+  "homepage": "https://github.com/Heydon/bruck-tokens#readme",
+  "devDependencies": {
+    "jest": "^28.1.1"
+  }
 }
