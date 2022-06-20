@@ -1,0 +1,88 @@
+{
+	"sizing": {
+		"relative": {
+			"0": {
+				"$value": "0",
+				"comment": "no spacing, zero."
+			},
+			"25": {
+				"$value": ".0625",
+				"comment": ".0625rem, 1px"
+			},
+			"50": {
+				"$value": ".125rem",
+				"comment": ".125rem, 2px"
+			},
+			"100": {
+				"$value": ".25rem",
+				"comment": ".25rem, 4px."
+			},
+			"200": {
+				"$value": ".5rem",
+				"comment": ".5rem, 8px."
+			},
+			"400": {
+				"$value": "1rem",
+				"comment": "1rem, 16px."
+			},
+			"600": {
+				"$value": "1.5rem",
+				"comment": "1.5rem, 24px."
+			},
+			"800": {
+				"$value": "2rem",
+				"comment": "2rem, 32px."
+			},
+			"1200": {
+				"$value": "3rem",
+				"comment": "3rem, 48px."
+			},
+			"1600": {
+				"$value": "4rem",
+				"comment": "4rem, 64px."
+			}
+		},
+		"absolute": {
+			"0": {
+				"$value": "0",
+				"comment": "no spacing, zero."
+			},
+			"25": {
+				"$value": "1px",
+				"comment": ".0625rem, 1px"
+			},
+			"50": {
+				"$value": "2px",
+				"comment": ".125rem, 2px"
+			},
+			"100": {
+				"$value": "4px",
+				"comment": ".25rem, 4px."
+			},
+			"200": {
+				"$value": "8px",
+				"comment": ".5rem, 8px."
+			},
+			"400": {
+				"$value": "16px",
+				"comment": "1rem, 16px."
+			},
+			"600": {
+				"$value": "24px",
+				"comment": "1.5rem, 24px."
+			},
+			"800": {
+				"$value": "32px",
+				"comment": "2rem, 32px."
+			},
+			"1200": {
+				"$value": "48px",
+				"comment": "3rem, 48px."
+			},
+			"1600": {
+				"$value": "64px",
+				"comment": "4rem, 64px."
+			}
+		}
+	}
+}

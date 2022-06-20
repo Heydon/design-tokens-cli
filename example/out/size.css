@@ -1,0 +1,22 @@
+:root {
+ --sizing-absolute-0: 0;
+ --sizing-absolute-100: 4px;
+ --sizing-absolute-1200: 48px;
+ --sizing-absolute-1600: 64px;
+ --sizing-absolute-200: 8px;
+ --sizing-absolute-25: 1px;
+ --sizing-absolute-400: 16px;
+ --sizing-absolute-50: 2px;
+ --sizing-absolute-600: 24px;
+ --sizing-absolute-800: 32px;
+ --sizing-relative-0: 0;
+ --sizing-relative-100: .25rem;
+ --sizing-relative-1200: 3rem;
+ --sizing-relative-1600: 4rem;
+ --sizing-relative-200: .5rem;
+ --sizing-relative-25: .0625;
+ --sizing-relative-400: 1rem;
+ --sizing-relative-50: .125rem;
+ --sizing-relative-600: 1.5rem;
+ --sizing-relative-800: 2rem;
+}

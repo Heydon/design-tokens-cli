@@ -1,11 +1,13 @@
-import { sortKeys } from './sortKeys';
+import { flatten } from './flatten.js';
+import { sortKeys } from './sortKeys.js';
 
 /**
  * Create a simple object of design token name/value pairs
- * @param {Array} tokensArrays A multidimensional array of tokens with their categories, names, and values in that order
+ * @param {Array} tokens A standard design tokens object (JSON))
  * @returns {Object} of token names and values
  */
-const objectify = tokensArrays => {
+const transform = tokens => {
+  const tokensArrays = flatten(tokens);
   const newObject = {};
   tokensArrays.forEach(arr => {
     const keys = arr.slice(0, -1).map(k => {
@@ -18,4 +20,4 @@ const objectify = tokensArrays => {
   return sortKeys(newObject); 
 }
 
-export { objectify }
+export { transform }

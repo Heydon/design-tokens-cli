@@ -1,5 +1,5 @@
 'use strict';
-import { sortKeys } from "../utils/sortKeys";
+import { sortKeys } from "../utils/sortKeys.js";
 
 test('Sorts an object\'s keys alphabetically', () => {
   const object = {
