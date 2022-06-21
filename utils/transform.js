@@ -1,5 +1,5 @@
-import { toCustomProps } from './toCustomProps.js';
-import { toScssVars } from './toScssVars.js';
+import { toCustomProps } from './transformers/toCustomProps.js';
+import { toScssVars } from './transformers/toScssVars.js';
 
 /**
  * Convert an object of design token name/value pairs into Scss (Sass) variables
@@ -14,7 +14,7 @@ import { toScssVars } from './toScssVars.js';
     case 'scss':
       return toScssVars(pairs);
     default: 
-      return console.error("The `as` value is not recognized."); 
+      throw new Error('The `as` value is not recognized');
   }
 }
 

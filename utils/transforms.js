@@ -5,14 +5,17 @@ import { transform } from './transform.js';
 const transforms = (configPath, options) => {
   const config = jetpack.read(configPath, 'json');
   config.transforms.forEach(t => {
-    let src = jetpack.cwd(t.src);
-    let dst = jetpack.cwd(t.dst);
-    src.find({ matching: "*.tokens.json" }).forEach((path) => {
-      const json = src.read(path, 'json');
+    let from = jetpack.cwd(t.from);
+    let to = t.to;
+    from.find({ matching: ['*.tokens.json', '*.tokens'] }).forEach((path) => {
+      const json = from.read(path, 'json');
       const pairs = flattenJSON(json);
-      const customProps = transform(pairs, t.as);
-      const newPath = `${path.split('.')[0]}.tokens.${t.as}`;
-      dst.write(newPath, customProps);
+      to.forEach(format => {
+        let code = transform(pairs, format.as);
+        let formatTo = jetpack.cwd(format.to);
+        let newPath = `${path.split('.')[0]}.tokens.${format.as}`;
+        formatTo.write(newPath, code);
+      });
     });
   });
 

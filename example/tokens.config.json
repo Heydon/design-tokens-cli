@@ -1,14 +1,17 @@
 {
   "transforms": [
     {
-      "src": "example/tokens",
-      "dst": "example/scss",
-      "as": "scss"
-    },
-    {
-      "src": "example/tokens",
-      "dst": "example/css",
-      "as": "css"
+      "from": "example/tokens",
+      "to": [
+        {
+          "as": "scss",
+          "to": "example/scss"
+        },
+        {
+          "as": "css",
+          "to": "example/css"
+        }        
+      ]
     }
   ]
 }
