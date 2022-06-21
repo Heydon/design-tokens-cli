@@ -1,0 +1,14 @@
+{
+  "transforms": [
+    {
+      "src": "example/tokens",
+      "dst": "example/scss",
+      "as": "scss"
+    },
+    {
+      "src": "example/tokens",
+      "dst": "example/css",
+      "as": "css"
+    }
+  ]
+}
