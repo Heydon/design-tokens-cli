@@ -1,23 +1,21 @@
-import { flatten } from './flatten.js';
-import { sortKeys } from './sortKeys.js';
+import { toCustomProps } from './toCustomProps.js';
+import { toScssVars } from './toScssVars.js';
 
 /**
- * Create a simple object of design token name/value pairs
- * @param {Array} tokens A standard design tokens object (JSON))
- * @returns {Object} of token names and values
+ * Convert an object of design token name/value pairs into Scss (Sass) variables
+ * @param {Object} pairs The flattened token key/value pairs
+ * @param {String} as What the tokens should be transformed into
+ * @returns {String}
  */
-const transform = tokens => {
-  const tokensArrays = flatten(tokens);
-  const newObject = {};
-  tokensArrays.forEach(arr => {
-    const keys = arr.slice(0, -1).map(k => {
-      return k.split(' ').join('-');
-    });
-    const key = keys.join('-');
-    const value = arr.at(-1);
-    newObject[key] = value;
-  });
-  return sortKeys(newObject); 
+ const transform = (pairs, as) => {
+  switch (as) {
+    case 'css':
+      return toCustomProps(pairs);
+    case 'scss':
+      return toScssVars(pairs);
+    default: 
+      return console.error("The `as` value is not recognized."); 
+  }
 }
 
 export { transform }

@@ -7,6 +7,9 @@
   "jest": {
     "transform": {}
   },
+  "bin": {
+    "tokens": "index.js"
+  },
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
   },
@@ -21,6 +24,7 @@
   },
   "homepage": "https://github.com/Heydon/bruck-tokens#readme",
   "devDependencies": {
+    "commander": "^9.3.0",
     "fs-jetpack": "^4.3.1",
     "jest": "^28.1.1"
   }
