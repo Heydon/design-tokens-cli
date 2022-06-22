@@ -1,4 +1,5 @@
 import jetpack from 'fs-jetpack';
+import { refToName } from "./refToName.js";
 import { flattenJSON } from './flattenJSON.js';
 import { transform } from './transform.js';
 
@@ -16,6 +17,12 @@ const transforms = (configPath, options) => {
     from.find({ matching: ['*.tokens.json', '*.tokens'] }).forEach((path) => {
       const json = from.read(path, 'json');
       const pairs = flattenJSON(json);
+      for (const pair in pairs) {
+        if (pairs[pair].startsWith('{')) {
+          let name = refToName(pairs[pair]);
+          pairs[pair] = pairs[name];
+        }
+      } 
       to.forEach(format => {
         let code = transform(pairs, format.as);
         let formatTo = jetpack.cwd(format.to);

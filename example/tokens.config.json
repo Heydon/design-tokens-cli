@@ -1,0 +1,17 @@
+{
+  "transforms": [
+    {
+      "from": "example/tokens",
+      "to": [
+        {
+          "as": "scss",
+          "to": "example/scss"
+        },
+        {
+          "as": "css",
+          "to": "example/css"
+        }        
+      ]
+    }
+  ]
+}

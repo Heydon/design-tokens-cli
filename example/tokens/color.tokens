@@ -4,6 +4,10 @@
 			"name": "white",
 			"$value": "#ffffff"
 		},
+		"blanche": {
+			"name": "white",
+			"$value": "{color.white}"
+		},
 		"black": {
 			"name": "black",
 			"$value": "#000000"
