@@ -14,7 +14,7 @@ import { toScssVars } from './transformers/toScssVars.js';
     case 'scss':
       return toScssVars(pairs);
     default: 
-      throw new Error('The `as` value is not recognized');
+      throw new Error(`The 'as' value ${as} is not recognized.`);
   }
 }
 
