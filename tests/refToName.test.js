@@ -1,7 +1,7 @@
 'use strict';
 import { refToName } from "../utils/refToName.js";
 
-test('Sorts an object\'s keys alphabetically', () => {
+test('Converts a reference string to a real token name.', () => {
   const ref = '{ color.gray scale.0 }';
 
   const converted = refToName(ref);
