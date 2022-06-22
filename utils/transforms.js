@@ -14,14 +14,16 @@ const transforms = (configPath, options) => {
   config.transforms.forEach(t => {
     let from = jetpack.cwd(t.from);
     let to = t.to;
-    from.find({ matching: ['*.tokens.json', '*.tokens'] }).forEach((path) => {
+    from.find({ matching: ['*.tokens.json', '*.tokens'] }).forEach(path => {
       const json = from.read(path, 'json');
       const pairs = flattenJSON(json);
       const resolvedPairs = findTrueValues(pairs);
+      const groupName = path.split('.')[0];
+      console.log('groupName', groupName);
       to.forEach(format => {
-        let code = transform(resolvedPairs, format.as);
+        let code = transform(resolvedPairs, format.as, groupName);
         let formatTo = jetpack.cwd(format.to);
-        let newPath = `${path.split('.')[0]}.tokens.${format.as}`;
+        let newPath = `${groupName}.tokens.${format.as}`;
         formatTo.write(newPath, code);
       });
     });

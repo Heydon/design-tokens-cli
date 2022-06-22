@@ -10,7 +10,11 @@
         {
           "as": "css",
           "to": "example/css"
-        }        
+        },
+        {
+          "as": "mjs",
+          "to": "example/js"
+        }      
       ]
     }
   ]
