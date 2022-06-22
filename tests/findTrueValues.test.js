@@ -1,5 +1,5 @@
 'use strict';
-import { findTrueValues } from "../utils/findTrueValues.js";
+import { findTrueValues } from '../utils/findTrueValues.js';
 
 test('Searches through references to find true value and apply it', () => {
   const tokens = {
