@@ -11,7 +11,7 @@ cli.helpOption(false);
 
 cli
   .command('transform')
-  .argument('<configFile>', 'The config file path')
+  .argument('[configPath]', 'The config file path')
   .action(transforms);
 
 cli.parse(process.argv);
