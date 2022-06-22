@@ -5,12 +5,11 @@ import { transform } from './transform.js';
 const transforms = (configPath, options) => {
   if (!configPath) {
     configPath = jetpack.find('./', { matching: 'tokens.config.json' })[0];
-    console.log(configPath)
   }
-  const config = jetpack.read(configPath, 'json');
-  if (!config) {
+  if (!configPath) {
     throw new Error('No config file found in current working directory.');
   }
+  const config = jetpack.read(configPath, 'json');
   config.transforms.forEach(t => {
     let from = jetpack.cwd(t.from);
     let to = t.to;
