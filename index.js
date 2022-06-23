@@ -4,7 +4,7 @@ import { program as cli } from 'commander';
 import { transforms } from './utils/transforms.js';
 
 cli.description('Process spec-conforming design tokens JSON');
-cli.name('tokens');
+cli.name('designTokens');
 cli.usage("<command>");
 cli.addHelpCommand(false);
 cli.helpOption(false);

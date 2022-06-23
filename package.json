@@ -8,7 +8,7 @@
     "transform": {}
   },
   "bin": {
-    "tokens": "index.js"
+    "designTokens": "index.js"
   },
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
