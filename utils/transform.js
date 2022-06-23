@@ -11,10 +11,10 @@ import { toESM } from './transformers/toESM.js';
  const transform = (pairs, as, groupName) => {
   switch (as) {
     case 'css':
-      return toCustomProps(pairs);
+      return toCustomProps(pairs, groupName);
     case 'scss':
       return toScssVars(pairs);
-    case 'mjs':
+    case 'mjs' || 'js':
       return toESM(pairs, groupName);
     default: 
       throw new Error(`The 'as' value ${as} is not recognized.`);

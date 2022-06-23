@@ -19,7 +19,6 @@ const transforms = (configPath, options) => {
       const pairs = flattenJSON(json);
       const resolvedPairs = findTrueValues(pairs);
       const groupName = path.split('.')[0];
-      console.log('groupName', groupName);
       to.forEach(format => {
         let code = transform(resolvedPairs, format.as, groupName);
         let formatTo = jetpack.cwd(format.to);
