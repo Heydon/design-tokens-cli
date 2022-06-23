@@ -13,7 +13,7 @@ import { toESM } from './transformers/toESM.js';
     case 'css':
       return toCustomProps(pairs, groupName);
     case 'scss':
-      return toScssVars(pairs);
+      return toScssVars(pairs, groupName);
     case 'mjs' || 'js':
       return toESM(pairs, groupName);
     default: 
