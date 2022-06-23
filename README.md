@@ -54,7 +54,7 @@ The `to` array for each transformation lists the formats you want and their resp
 Either you explicitly define the path to the config file&hellip;
 
 ```
-designTokens transform ./path/to/config
+designTokens transform ./path/to/my-config.json
 ```
 
 &hellip;or you leave that argument out and the CLI will look for a `tokens.config.json` file anywhere in the current working directory:
