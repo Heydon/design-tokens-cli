@@ -12,9 +12,21 @@ const flattenJSON = tokens => {
   (function find(tokens) {
     for (const key of Object.keys(tokens)) {
       if (key === '$value') {
-        path.push(tokens[key]);
-        tokensArrays.push([...path]);
-        path.pop();
+        if (typeof tokens[key] === 'string') {
+          path.push(tokens[key]);
+          tokensArrays.push([...path]);
+          path.pop();
+        } else if (typeof tokens[key] === 'object') {
+          let $values = tokens[key];
+          for (const key in $values) {
+            let pathCopy = [...path];
+            pathCopy.push(key);
+            pathCopy.push($values[key]);
+            tokensArrays.push([...pathCopy]);
+          }
+        } else {
+          throw new Error(`$value properties must be strings or objects.`);
+        }
       }
       const o = tokens[key];
       if (o && typeof o === "object" && !Array.isArray(o)) {
