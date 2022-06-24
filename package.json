@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Heydon/bruck-tokens.git"
+    "url": "git+https://github.com/Heydon/design-tokens-cli.git"
   },
   "author": "Heydon Pickering",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Heydon/bruck-tokens/issues"
+    "url": "https://github.com/Heydon/design-tokens-cli/issues"
   },
-  "homepage": "https://github.com/Heydon/bruck-tokens#readme",
+  "homepage": "https://github.com/Heydon/design-tokens-cli#readme",
   "devDependencies": {
     "commander": "^9.3.0",
     "fs-jetpack": "^4.3.1",
