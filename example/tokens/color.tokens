@@ -45,28 +45,6 @@
 				"name": "grayscale-800",
 				"$value": "#222222"
 			}
-		},
-		"blue": {
-			"100": {
-				"name": "blue-100",
-				"$value": "#EBF1F5"
-			},
-			"200": {
-				"name": "blue-200",
-				"$value": "#CEDBE0"
-			},
-			"400": {
-				"name": "blue-600",
-				"$value": "#025E8D"
-			},
-			"700": {
-				"name": "blue-700",
-				"$value": "#003F8D"
-			},
-			"900": {
-				"name": "blue-900",
-				"$value": "#01324B"
-			}
 		}
 	}
 }

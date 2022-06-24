@@ -14,7 +14,11 @@
         {
           "as": "mjs",
           "to": "example/js"
-        }      
+        },  
+        {
+          "as": "json",
+          "to": "example/json"
+        }  
       ]
     }
   ]

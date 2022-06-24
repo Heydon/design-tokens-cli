@@ -1,5 +1,5 @@
 /**
- * Convert an object of design token name/value pairs into custom Properties 
+ * Convert an object of design token name/value pairs into CSS custom Properties 
  * @param {Object} tokensObject 
  * @returns {String}
  */

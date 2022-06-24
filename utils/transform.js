@@ -1,6 +1,7 @@
 import { toCustomProps } from './transformers/toCustomProps.js';
 import { toScssVars } from './transformers/toScssVars.js';
 import { toESM } from './transformers/toESM.js';
+import { toJSON } from './transformers/toJSON.js';
 
 /**
  * Convert an object of design token name/value pairs into Scss (Sass) variables
@@ -16,6 +17,8 @@ import { toESM } from './transformers/toESM.js';
       return toScssVars(pairs, groupName);
     case 'mjs' || 'js':
       return toESM(pairs, groupName);
+    case 'json':
+      return toJSON(pairs);
     default: 
       throw new Error(`The 'as' value ${as} is not recognized.`);
   }
