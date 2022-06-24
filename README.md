@@ -4,15 +4,15 @@ A design-tokens-format-adhering token transformation CLI (Command Line Interface
 
 ## Supports
 
-[x] Converting from design tokens in the [standard JSON format](https://design-tokens.github.io/community-group/format/)... 
-[x] ...to CSS (custom properties)
-[x] ...to Sass (scss) variables 
-[x] ...to ES modules
-[x] ...to JSON (flattened to name/value pairs)
-[x] (Chained) token reference resolution
-[ ] Reference resolution _between_ separate tokens files
-[x] Composite tokens (`$value`s as objects)
-[x] `*.tokens.json` and `*.tokens` file types
+- [x] Converting from design tokens in the [standard JSON format](https://design-tokens.github.io/community-group/format/)... 
+- [x] ...to CSS (custom properties)
+- [x] ...to Sass (scss) variables 
+- [x] ...to ES modules
+- [x] ...to JSON (flattened to name/value pairs)
+- [x] (Chained) token reference resolution
+- [ ] Reference resolution _between_ separate tokens files
+- [x] Composite tokens (`$value`s as objects)
+- [x] `*.tokens.json` and `*.tokens` file types
 
 ## Getting started
 
