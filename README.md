@@ -13,6 +13,7 @@ A design-tokens-format-adhering token transformation CLI (Command Line Interface
 - [ ] Reference resolution _between_ separate tokens files
 - [x] Composite tokens (`$value`s as objects)
 - [x] `*.tokens.json` and `*.tokens` file types
+- [ ] Concatenation of separate tokens output files into single files
 
 ## Getting started
 
