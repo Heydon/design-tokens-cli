@@ -1,5 +1,5 @@
 {
-  "name": "bruck-tokens",
+  "name": "design-tokens-cli",
   "version": "0.0.1",
   "type": "module",
   "description": "Design tokens parser",
