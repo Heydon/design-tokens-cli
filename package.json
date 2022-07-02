@@ -1,6 +1,6 @@
 {
   "name": "design-tokens-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "Design tokens parser",
   "main": "index.js",
@@ -23,9 +23,11 @@
     "url": "https://github.com/Heydon/design-tokens-cli/issues"
   },
   "homepage": "https://github.com/Heydon/design-tokens-cli#readme",
-  "devDependencies": {
+  "dependencies": {
     "commander": "^9.3.0",
-    "fs-jetpack": "^4.3.1",
+    "fs-jetpack": "^4.3.1"
+  },
+  "devDependencies": {
     "jest": "^28.1.1"
   }
 }
