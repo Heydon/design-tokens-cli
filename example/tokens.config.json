@@ -1,7 +1,28 @@
 {
   "transforms": [
     {
-      "from": "example/tokens",
+      "from": "example/tokens-layout",
+      "to": [
+        {
+          "as": "scss",
+          "to": "example/output/scss"
+        },
+        {
+          "as": "css",
+          "to": "example/output/css"
+        },
+        {
+          "as": "mjs",
+          "to": "example/output/js"
+        },  
+        {
+          "as": "json",
+          "to": "example/output/json"
+        }  
+      ]
+    },
+    {
+      "from": "example/tokens-type",
       "to": [
         {
           "as": "scss",

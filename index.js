@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { program as cli } from 'commander';
-import { transforms } from './utils/transforms.js';
+import { transform } from './utils/transform.js';
 
 cli.description('Process spec-conforming design tokens JSON');
 cli.name('designTokens');
@@ -12,6 +12,6 @@ cli.helpOption(false);
 cli
   .command('transform')
   .argument('[configPath]', 'The config file path')
-  .action(transforms);
+  .action(transform);
 
 cli.parse(process.argv);

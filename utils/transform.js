@@ -1,27 +1,47 @@
-import { toCustomProps } from './transformers/toCustomProps.js';
-import { toScssVars } from './transformers/toScssVars.js';
-import { toESM } from './transformers/toESM.js';
-import { toJSON } from './transformers/toJSON.js';
+import jetpack from 'fs-jetpack';
+import { findTrueValues } from "./findTrueValues.js";
+import { flattenJSON } from './flattenJSON.js';
+import { chooseTransform } from './chooseTransform.js';
 
-/**
- * Convert an object of design token name/value pairs into Scss (Sass) variables
- * @param {Object} pairs The flattened token key/value pairs
- * @param {String} as What the tokens should be transformed into
- * @returns {String}
- */
- const transform = (pairs, as, groupName) => {
-  switch (as) {
-    case 'css':
-      return toCustomProps(pairs);
-    case 'scss':
-      return toScssVars(pairs);
-    case 'mjs' || 'js':
-      return toESM(pairs, groupName);
-    case 'json':
-      return toJSON(pairs);
-    default: 
-      throw new Error(`The 'as' value ${as} is not recognized.`);
+const transform = (configPath, options) => {
+  if (!configPath) {
+    configPath = jetpack.find('./', { matching: 'tokens.config.json' })[0];
   }
+  if (!configPath) {
+    throw new Error('No config file found in current working directory.');
+  }
+  const config = jetpack.read(configPath, 'json');
+  let dictionary = {};
+  config.transforms.forEach(t => {
+    let from = jetpack.cwd(t.from);
+    from.find({ matching: ['*.tokens.json', '*.tokens'] }).forEach(path => {
+      const json = from.read(path, 'json');
+      const pairs = flattenJSON(json); 
+      dictionary = Object.assign(dictionary, pairs);
+    });
+  });
+  const resolvedDictionary = findTrueValues(dictionary);
+  config.transforms.forEach(t => {
+    let from = jetpack.cwd(t.from);
+    let to = t.to
+    from.find({ matching: ['*.tokens.json', '*.tokens'] }).forEach(path => {
+      const json = from.read(path, 'json');
+      const pairs = flattenJSON(json); 
+      Object.keys(pairs).forEach(key => {
+        if (pairs[key].startsWith('{')) {
+          pairs[key] = resolvedDictionary[key];
+        }
+      });
+      const groupName = path.split('.')[0];
+      to.forEach(format => {
+        let code = chooseTransform(pairs, format.as, groupName);
+        let formatTo = jetpack.cwd(format.to);
+        let newPath = `${groupName}.tokens.${format.as}`;
+        formatTo.write(newPath, code);
+      });       
+    });
+  });  
+
 }
 
 export { transform }
