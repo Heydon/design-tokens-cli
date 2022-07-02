@@ -104,7 +104,4 @@ dist
 .tern-port
 
 # Generated tokens
-example/css
-example/js
-example/json
-example/scss
+example/output

@@ -3,9 +3,8 @@
  * @param {Object} tokensObject 
  * @returns {String}
  */
-const toScssVars = (tokensObject, groupName) => {
+const toScssVars = (tokensObject) => {
   let string = '';
-  string += `// ${groupName}\n`
   Object.keys(tokensObject).forEach(key => {
     string += `$${key}: ${tokensObject[key]};\n`;
   });

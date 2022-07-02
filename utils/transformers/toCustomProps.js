@@ -3,13 +3,12 @@
  * @param {Object} tokensObject 
  * @returns {String}
  */
-const toCustomProps = (tokensObject, groupName, includeRoot = true) => {
+const toCustomProps = (tokensObject, includeRoot = true) => {
   let string = '';
   if (includeRoot) string += ':root {\n';
-  string += ` /* ↓ ${groupName} */\n`;
   Object.keys(tokensObject).forEach(key => {
     if (includeRoot) string += ' ';
-    string += ` --${key}: ${tokensObject[key]};\n`;
+    string += `\t--${key}: ${tokensObject[key]};\n`;
   });
   if (includeRoot) string += '}\n';
   return string;

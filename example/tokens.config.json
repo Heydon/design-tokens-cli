@@ -5,19 +5,19 @@
       "to": [
         {
           "as": "scss",
-          "to": "example/scss"
+          "to": "example/output/scss"
         },
         {
           "as": "css",
-          "to": "example/css"
+          "to": "example/output/css"
         },
         {
           "as": "mjs",
-          "to": "example/js"
+          "to": "example/output/js"
         },  
         {
           "as": "json",
-          "to": "example/json"
+          "to": "example/output/json"
         }  
       ]
     }

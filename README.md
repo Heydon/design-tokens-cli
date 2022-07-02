@@ -10,7 +10,7 @@ A design-tokens-format-adhering token transformation CLI (Command Line Interface
 - [x] ...to ES modules
 - [x] ...to JSON (flattened to name/value pairs)
 - [x] (Chained) token reference resolution
-- [ ] Reference resolution _between_ separate tokens files
+- [x] Reference resolution _between_ separate tokens files
 - [x] Composite tokens (`$value`s as objects)
 - [x] `*.tokens.json` and `*.tokens` file types
 - [ ] Concatenation of separate tokens output files into single files

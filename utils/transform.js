@@ -12,9 +12,9 @@ import { toJSON } from './transformers/toJSON.js';
  const transform = (pairs, as, groupName) => {
   switch (as) {
     case 'css':
-      return toCustomProps(pairs, groupName);
+      return toCustomProps(pairs);
     case 'scss':
-      return toScssVars(pairs, groupName);
+      return toScssVars(pairs);
     case 'mjs' || 'js':
       return toESM(pairs, groupName);
     case 'json':

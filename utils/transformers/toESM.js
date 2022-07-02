@@ -10,7 +10,7 @@ const toESM = (tokensObject, groupName) => {
   string += `export const ${groupName} = {\n`;
   keys.forEach(key => {
     let comma = (keys.indexOf(key) + 1) === keys.length ? '' : ',';
-    string += ` '${key}': '${tokensObject[key]}'${comma}\n`;
+    string += `\t'${key}': '${tokensObject[key]}'${comma}\n`;
   });
   string += `}`;
   return string;

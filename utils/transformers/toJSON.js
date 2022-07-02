@@ -4,7 +4,7 @@
  * @returns {String}
  */
  const toJSON = (tokensObject) => {
-  return JSON.stringify(tokensObject, undefined, 2);
+  return JSON.stringify(tokensObject, undefined, '\t');
 }
 
 export { toJSON }
