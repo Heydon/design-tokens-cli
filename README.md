@@ -10,10 +10,11 @@ A design-tokens-format-adhering token transformation CLI (Command Line Interface
 - [x] ...to ES modules
 - [x] ...to JSON (flattened to name/value pairs)
 - [x] (Chained) token reference resolution
-- [x] Reference resolution _between_ separate tokens files
+- [x] Reference resolution _between_ separate tokens files in one transform
+- [ ] Reference resolution _between_ separate tokens _between_ separate transforms
 - [x] Composite tokens (`$value`s as objects)
 - [x] `*.tokens.json` and `*.tokens` file types
-- [ ] Concatenation of separate tokens output files into single files
+- [x] Concatenation of separate token files under a single name
 
 ## Getting started
 
@@ -29,29 +30,31 @@ npm i -g design-tokens-cli
 
 Transformations are defined using a master config file. From the example folder: 
 
-```
+```json
 {
   "transforms": [
     {
-      "from": "example/tokens",
+      "from": "origin/tokens",
       "to": [
         {
           "as": "scss",
-          "to": "example/scss"
+          "to": "destination/scss"
         },
         {
           "as": "css",
-          "to": "example/css"
+          "to": "destinatione/css"
         },
         {
           "as": "mjs",
-          "to": "example/js"
+          "to": "destination/js"
         }      
       ]
     }
   ]
 }
 ```
+
+#### Formats
 
 The `to` array for each transformation lists the formats you want and their respective output folders. The `as` property must be the file extension for the output format. Both `mjs` and `js` output ES modules.
 
@@ -69,3 +72,36 @@ designTokens transform ./path/to/my-config.json
 designTokens transform
 ```
 
+## File names and groups
+
+By convention, the file name for each tokens file found in `from` represents the top level "group" name for those tokens. In practice, this means converting **/origin/tokens/color-greyscale.tokens.json** will result in a set of tokens each prefixed with `color-greyscale-`. For js/mjs transformations the file would look something like the following, with `color-greyscale` converted into camel case:
+
+```js
+export const colorGreyscale = {
+	'color-black': '#000000',
+	'color-blanche': '#ffffff',
+}
+```
+
+## Concatenation 
+
+If the transform has a `name` property, multiple files found in the `from` origin will be concatenated into a single output file of that name. Take the following example:
+
+```json
+{
+  "transforms": [
+    {
+      "name": "layout",
+      "from": "origin/tokens",
+      "to": [
+        {
+          "as": "css",
+          "to": "destination/css"
+        }   
+      ]
+    }
+  ]
+}
+```
+
+Where there are **breakpoints.tokens.json** and **sizes.tokens.json** files in **/origin/tokens**, their tokens will be placed in the same **/destination/css/layout.tokens.css** file.
