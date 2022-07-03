@@ -78,8 +78,8 @@ By convention, the file name for each tokens file found in `from` represents the
 
 ```js
 export const colorGreyscale = {
-	'color-black': '#000000',
-	'color-blanche': '#ffffff',
+  'color-black': '#000000',
+  'color-blanche': '#ffffff',
 }
 ```
 
