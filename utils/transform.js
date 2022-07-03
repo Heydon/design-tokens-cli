@@ -5,6 +5,7 @@ import { flattenJSON } from './flattenJSON.js';
 import { chooseTransform } from './chooseTransform.js';
 
 const transform = (configPath, options) => {
+  // If no config path argument, look for config file
   if (!configPath) {
     configPath = jetpack.find('./', { matching: 'tokens.config.json' })[0];
   }
@@ -12,58 +13,55 @@ const transform = (configPath, options) => {
     throw new Error('No config file found in current working directory.');
   }
 
+  // Read the config file as JSON
   const config = jetpack.read(configPath, 'json');
-  let groups = {};
-  config.transforms.forEach(t => {
-    let from = jetpack.cwd(t.from);
+
+  config.transforms.forEach(transform => {
+    let from = jetpack.cwd(transform.from);
+    // Keep track of tokens in one object
+    let allTokens = {};
     from.find({ matching: ['*.tokens.json', '*.tokens'] }).forEach(path => {
       const json = from.read(path, 'json');
       const pairs = flattenJSON(json); 
-      groups[path.split('.')[0]] = pairs;
+      allTokens[path.split('.')[0]] = pairs;
     });
-  });
+    
+    // Resolve token references
+    const resolvedPairs = findTrueValues(allTokens);
+    // Exit if there are duplicate token names
+    const duplicates = findDuplicates(Object.keys(resolvedPairs));
+    if (duplicates.length) {
+      throw new Error(`You have duplicate token names: ${duplicates.join(', ')}`);
+    }
 
-  const resolvedPairs = findTrueValues(groups);
-  
-  const duplicates = findDuplicates(Object.keys(resolvedPairs));
-  if (duplicates.length) {
-    throw new Error(`You have duplicate token names: ${duplicates.join(', ')}`);
-  }
+    // Place true values back into categorized object
+    for (let group in allTokens) {
+      Object.keys(allTokens[group]).forEach(token => {
+        allTokens[group][token] = resolvedPairs[token];
+      });
+    }
 
-  config.transforms.forEach(t => {
-    let from = jetpack.cwd(t.from);
-    let to = t.to
-
-    /*if (t.name) {
-      to.forEach(format => {
-        let code = chooseTransform(resolvedPairs, format.as, t.name);
+    // If the transform has a name, concatenate under name
+    if (transform.name) {
+      transform.to.forEach(format => {
+        let code = chooseTransform(resolvedPairs, format.as, transform.name);
         let formatTo = jetpack.cwd(format.to);
-        let newPath = `${t.name}.tokens.${format.as}`;
+        let newPath = `${transform.name}.tokens.${format.as}`;
         formatTo.write(newPath, code);
       });
       return;
-    }*/
-
-    from.find({ matching: ['*.tokens.json', '*.tokens'] }).forEach(path => {
-      const json = from.read(path, 'json');
-      const pairs = flattenJSON(json); 
-      Object.keys(pairs).forEach(key => {
-        if (pairs[key].startsWith('{')) {
-          pairs[key] = resolvedPairs[key];
-        }
-      });
-
-      const groupName = path.split('.')[0];
-
-      to.forEach(format => {
-        let code = chooseTransform(pairs, format.as, groupName);
-        let formatTo = jetpack.cwd(format.to);
-        let newPath = `${groupName}.tokens.${format.as}`;
-        formatTo.write(newPath, code);
-      });       
-    });
+    // Otherwise, create separate files after file names
+    } else {
+      for (let group in allTokens) {
+        transform.to.forEach(format => {
+          let code = chooseTransform(allTokens[group], format.as, group);
+          let formatTo = jetpack.cwd(format.to);
+          let newPath = `${group}.tokens.${format.as}`;
+          formatTo.write(newPath, code);
+        });        
+      }
+    }
   });
-
 }
 
 export { transform }
