@@ -1,6 +1,7 @@
 {
   "transforms": [
     {
+      "name": "layout",
       "from": "example/tokens-layout",
       "to": [
         {

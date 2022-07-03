@@ -5,20 +5,24 @@ import { refToName } from "./refToName.js";
  * @param {Object} pairs The flattened token key/value pairs 
  * @returns {Object}
  */
-const findTrueValues = pairs => {
-  const pairsCopy = JSON.parse(JSON.stringify(pairs));
-  for (const pair in pairsCopy) {
-    let val = pairsCopy[pair];
+const findTrueValues = groups => {
+  const newGroups = JSON.parse(JSON.stringify(groups));
+  let justPairs = {};
+  Object.keys(newGroups).forEach(group => {
+    Object.assign(justPairs, newGroups[group]);
+  });
+  for (const pair in justPairs) {
+    let val = justPairs[pair];
     while (val.startsWith('{')) {
-      let name = refToName(pairsCopy[pair]);
-      if (!pairsCopy[name]) {
+      let name = refToName(justPairs[pair]);
+      if (!justPairs[name]) {
         throw new Error(`The token reference name '${name}' does not exist.`);
       }
-      val = pairsCopy[name];
+      val = justPairs[name];
     }
-    pairsCopy[pair] = val;
+    justPairs[pair] = val;
   } 
-  return pairsCopy;
+  return justPairs;
 }
 
 export { findTrueValues }
