@@ -1,7 +1,7 @@
 'use strict';
 import { toESM } from "../utils/transformers/toESM.js";
 
-test('Converts tokens to CSS custom properties', () => {
+test('Converts tokens to ES modules', () => {
   const tokens = {
     'token-color-1': '#000',
     'token-color-2': '#fff'

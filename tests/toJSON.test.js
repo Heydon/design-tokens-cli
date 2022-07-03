@@ -1,7 +1,7 @@
 'use strict';
 import { toJSON } from "../utils/transformers/toJSON.js";
 
-test('Converts tokens to CSS custom properties', () => {
+test('Converts tokens to (flat) JSON', () => {
   const tokens = {
     "token-color-1": "#000",
     "token-color-2": "#fff"
