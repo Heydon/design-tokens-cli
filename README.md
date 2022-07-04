@@ -28,7 +28,7 @@ npm i -g design-tokens-cli
 
 ### Configuration
 
-Transformations are defined using a master config file. From the example folder: 
+Transformations are defined using a master config file. Here is a configuration with just one transform: 
 
 ```json
 {
