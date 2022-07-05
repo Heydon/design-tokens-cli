@@ -42,7 +42,7 @@ Transformations are defined using a master config file. Here is a configuration 
         },
         {
           "as": "css",
-          "to": "destinatione/css"
+          "to": "destination/css"
         },
         {
           "as": "mjs",
