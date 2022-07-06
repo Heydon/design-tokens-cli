@@ -3,14 +3,15 @@
  * @param {Object} tokensObject 
  * @returns {String}
  */
-const toESM = (tokensObject, groupName) => {
+const toESM = (tokensObject, groupName, config) => {
+  const prefix = `${config.globalPrefix}-` || '';
   groupName = groupName.replace(/-./g, x=>x[1].toUpperCase());
   const keys = Object.keys(tokensObject);
   let string = '';
   string += `export const ${groupName} = {\n`;
   keys.forEach(key => {
     let comma = (keys.indexOf(key) + 1) === keys.length ? '' : ',';
-    string += `\t'${key}': '${tokensObject[key]}'${comma}\n`;
+    string += `\t'${prefix}${key}': '${tokensObject[key]}'${comma}\n`;
   });
   string += `}`;
   return string;

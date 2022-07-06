@@ -3,10 +3,11 @@
  * @param {Object} tokensObject 
  * @returns {String}
  */
-const toScssVars = (tokensObject) => {
+const toScssVars = (tokensObject, config) => {
+  const prefix = `${config.globalPrefix}-` || '';
   let string = '';
   Object.keys(tokensObject).forEach(key => {
-    string += `$${key}: ${tokensObject[key]};\n`;
+    string += `$${prefix}${key}: ${tokensObject[key]};\n`;
   });
   return string;
 }

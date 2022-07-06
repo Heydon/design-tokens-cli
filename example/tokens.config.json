@@ -1,4 +1,5 @@
 {
+  "globalPrefix": "token",
   "transforms": [
     {
       "name": "layout",

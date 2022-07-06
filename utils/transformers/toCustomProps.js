@@ -3,12 +3,13 @@
  * @param {Object} tokensObject 
  * @returns {String}
  */
-const toCustomProps = (tokensObject, includeRoot = true) => {
+const toCustomProps = (tokensObject, config, includeRoot = true) => {
+  const prefix = `${config.globalPrefix}-` || '';
   let string = '';
   if (includeRoot) string += ':root {\n';
   Object.keys(tokensObject).forEach(key => {
     if (includeRoot) string += ' ';
-    string += `\t--${key}: ${tokensObject[key]};\n`;
+    string += `\t--${prefix}${key}: ${tokensObject[key]};\n`;
   });
   if (includeRoot) string += '}\n';
   return string;

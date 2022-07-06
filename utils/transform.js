@@ -22,7 +22,7 @@ const transform = (configPath, options) => {
     let allTokens = {};
     from.find({ matching: ['*.tokens.json', '*.tokens'] }).forEach(path => {
       const json = from.read(path, 'json');
-      const pairs = flattenJSON(json); 
+      let pairs = flattenJSON(json);
       allTokens[path.split('.')[0]] = pairs;
     });
     
@@ -44,7 +44,7 @@ const transform = (configPath, options) => {
     // If the transform has a name, concatenate under name
     if (transform.name) {
       transform.to.forEach(format => {
-        let code = chooseTransform(resolvedPairs, format.as, transform.name);
+        let code = chooseTransform(resolvedPairs, format.as, transform.name, config);
         let formatTo = jetpack.cwd(format.to);
         let newPath = `${transform.name}.tokens.${format.as}`;
         formatTo.write(newPath, code);
@@ -54,7 +54,7 @@ const transform = (configPath, options) => {
     } else {
       for (let group in allTokens) {
         transform.to.forEach(format => {
-          let code = chooseTransform(allTokens[group], format.as, group);
+          let code = chooseTransform(allTokens[group], format.as, group, config);
           let formatTo = jetpack.cwd(format.to);
           let newPath = `${group}.tokens.${format.as}`;
           formatTo.write(newPath, code);

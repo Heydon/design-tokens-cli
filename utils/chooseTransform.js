@@ -9,16 +9,16 @@ import { toJSON } from './transformers/toJSON.js';
  * @param {String} as What the tokens should be transformed into
  * @returns {String}
  */
- const chooseTransform = (pairs, as, groupName) => {
+ const chooseTransform = (pairs, as, groupName, config) => {
   switch (as) {
     case 'css':
-      return toCustomProps(pairs);
+      return toCustomProps(pairs, config);
     case 'scss':
-      return toScssVars(pairs);
+      return toScssVars(pairs, config);
     case 'mjs' || 'js':
-      return toESM(pairs, groupName);
+      return toESM(pairs, groupName, config);
     case 'json':
-      return toJSON(pairs);
+      return toJSON(pairs, config);
     default: 
       throw new Error(`The 'as' value ${as} is not recognized.`);
   }

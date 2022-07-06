@@ -3,7 +3,12 @@
  * @param {Object} tokensObject 
  * @returns {String}
  */
- const toJSON = (tokensObject) => {
+ const toJSON = (tokensObject, config) => {
+  if (config.globalPrefix) {
+    tokensObject = Object.fromEntries(
+      Object.entries(tokensObject).map(([k, v]) => [`${config.globalPrefix}-${k}`, v])
+    )
+  }
   return JSON.stringify(tokensObject, undefined, '\t');
 }
 
