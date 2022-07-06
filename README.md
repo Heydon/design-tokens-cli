@@ -28,7 +28,7 @@ npm i -g design-tokens-cli
 
 ### Configuration
 
-Transformations are defined using a master config file. From the example folder: 
+Transformations are defined using a master config file. Here is a configuration with just one transform: 
 
 ```json
 {
@@ -42,7 +42,7 @@ Transformations are defined using a master config file. From the example folder:
         },
         {
           "as": "css",
-          "to": "destinatione/css"
+          "to": "destination/css"
         },
         {
           "as": "mjs",
@@ -104,4 +104,4 @@ If the transform has a `name` property, multiple files found in the `from` origi
 }
 ```
 
-Where there are **breakpoints.tokens.json** and **sizes.tokens.json** files in **/origin/tokens**, their tokens will be placed in the same **/destination/css/layout.tokens.css** file.
+Where there are **breakpoints.tokens.json** and **sizes.tokens.json** files in **/origin/tokens**, their tokens will be placed in the same **/destination/css/layout.tokens.css** file. Without the `name`, separate  **breakpoints.tokens.css** and **sizes.tokens.css** files would be made.
