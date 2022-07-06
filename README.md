@@ -83,6 +83,16 @@ export const colorGreyscale = {
 }
 ```
 
+## `globalPrefix`
+
+You can prefix all tokens with a common string using the top-level `globalPrefix` property in your config file. Using...
+
+```json
+"globalPrefix": "token-"
+```
+
+...`color-brand-light` becomes `token--color-brand-light`.
+
 ## Concatenation 
 
 If the transform has a `name` property, multiple files found in the `from` origin will be concatenated into a single output file of that name. Take the following example:
