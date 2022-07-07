@@ -4,7 +4,7 @@
  * @returns {String}
  */
 const toESM = (tokensObject, groupName, config) => {
-  const prefix = `${config.globalPrefix}-` || '';
+  const prefix = config.globalPrefix ? `${config.globalPrefix}-` : '';
   groupName = groupName.replace(/-./g, x=>x[1].toUpperCase());
   const keys = Object.keys(tokensObject);
   let string = '';

@@ -4,7 +4,7 @@
  * @returns {String}
  */
 const toScssVars = (tokensObject, config) => {
-  const prefix = `${config.globalPrefix}-` || '';
+  const prefix = config.globalPrefix ? `${config.globalPrefix}-` : '';
   let string = '';
   Object.keys(tokensObject).forEach(key => {
     string += `$${prefix}${key}: ${tokensObject[key]};\n`;

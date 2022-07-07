@@ -4,7 +4,7 @@
  * @returns {String}
  */
 const toCustomProps = (tokensObject, config, includeRoot = true) => {
-  const prefix = `${config.globalPrefix}-` || '';
+  const prefix = config.globalPrefix ? `${config.globalPrefix}-` : '';
   let string = '';
   if (includeRoot) string += ':root {\n';
   Object.keys(tokensObject).forEach(key => {
